@@ -1,0 +1,70 @@
+# Specifies intentionally untracked files to ignore when using Git
+# http://git-scm.com/docs/gitignore
+
+*~
+*.sw[mnpcod]
+.tmp
+*.tmp
+*.tmp.*
+UserInterfaceState.xcuserstate
+$RECYCLE.BIN/
+
+*.log
+log.txt
+
+
+/.sourcemaps
+/.versions
+/coverage
+
+# Ionic
+/belleza-app/.ionic
+/belleza-app/www
+/belleza-app/platforms
+/belleza-app/plugins
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/belleza-app/node_modules
+/belleza-appnpm-debug.log
+/belleza-appyarn-error.log
+
+# IDEs and editors
+/belleza-app.idea/
+/belleza-app.project
+/belleza-app.classpath
+/belleza-app.c9/
+/belleza-app*.launch
+/belleza-app.settings/
+/belleza-app*.sublime-project
+/belleza-app*.sublime-workspace
+
+# Visual Studio Code
+/belleza-app.vscode/*
+/belleza-app!.vscode/settings.json
+/belleza-app!.vscode/tasks.json
+/belleza-app!.vscode/launch.json
+/belleza-app!.vscode/extensions.json
+/belleza-app.history/*
+
+
+# Miscellaneous
+/belleza-app/.angular
+/belleza-app/.angular/cache
+/belleza-app.sass-cache/
+/belleza-app/connect.lock
+/belleza-app/coverage
+/belleza-app/libpeerconnection.log
+/belleza-apptestem.log
+/belleza-app/typings
+
+# System files
+.DS_Store
+Thumbs.db
+
+/backendbelleza/env/
