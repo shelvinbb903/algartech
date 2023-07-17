@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cancel()">
+        <ion-icon slot="icon-only" color="danger" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Datos Entrega</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-padding">
+  <ion-list>
+    <ion-item>
+      <ion-input label="Cedula" labelPlacement="floating" [(ngModel)]="pedidoSer.pedido_request.cedula"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-textarea label="Dirección" labelPlacement="floating" [(ngModel)]="pedidoSer.pedido_request.direccion"></ion-textarea>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-button slot="end" (click)="guardar()" [disabled]="this.pedidoSer.pedido_request.cedula.trim() == '' || this.pedidoSer.pedido_request.direccion.trim() == ''">Pagar</ion-button>
+    </ion-item>
+  </ion-list>
+  
+  
+</ion-content>
