@@ -1,0 +1,67 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Departamentos</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list lines="full">
+      <ion-item detail="true" *ngFor="let item of list_menu" (click)="cargarProductos(item.id)">
+        <ion-label>{{ item.nombre | titlecase }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" id="main-content">
+  <ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      
+      <ion-title class="ion-text-center">Belleza</ion-title>
+
+      <ion-buttons slot="end">
+        <ion-button (click)="abrirPedido()" [disabled]="pedidoSer.pedido_request.detalle.length == 0">
+          <ion-icon slot="icon-only" name="cart"></ion-icon>
+        </ion-button>
+        <ion-badge *ngIf="pedidoSer.pedido_request.detalle.length > 0">{{ pedidoSer.pedido_request.detalle.length }}</ion-badge>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>  
+
+  <ion-content class="ion-padding" [fullscreen]="true"> 
+
+    <ion-grid>
+      <ion-row>
+        <ion-col sizeLg="6" sizeMd="6" sizeSm="12" sizeXl="4" sizeXs="12" *ngFor="let item of productosSer.listado_productos">
+          <ion-card class="ion-text-center">
+            <img [src]="item.item" width="50%" (error)="errorImage(img)" #img />
+            <ion-card-header class="ion-text-start">
+              <ion-card-title>{{ item.nombre | titlecase }}</ion-card-title>
+            </ion-card-header>
+          
+            <ion-card-content class="ion-text-start">
+              <p>{{ item.descripcion || '' }}</p>
+              <p>{{ item.valor_unitario | currency }}</p>
+            </ion-card-content>
+
+            <ion-item>
+              <ion-icon name="ellipse" color="primary" [class]="pedidoSer.color_seleccionado == color.id ? 'color-producto color-seleccionado' : 'color-producto color-no-seleccionado'" (click)="seleccionarColor(color.id)" style="{{'--ion-color-base: ' + color.color + ' !important;'}}" *ngFor="let color of item.color"></ion-icon>
+            </ion-item>            
+            
+            <ion-item>
+              <ion-button slot="end" fill="clear" color="success" (click)="agregarProducto(item)">Agregar<ion-icon name="add" slot="end"></ion-icon></ion-button>                
+            </ion-item>
+            
+            
+            
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-content>
+</div>

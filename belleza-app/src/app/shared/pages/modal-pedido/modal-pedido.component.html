@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cerrarVentana()">
+        <ion-icon slot="icon-only" color="danger" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">Pedido</ion-title>
+    <ion-buttons slot="end">
+      <ion-button color="success" (click)="irPagar()" [disabled]="pedidoSer.pedido_request.detalle.length == 0">Pagar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list lines="full">
+    <ion-item *ngIf="pedidoSer.pedido_request.detalle.length > 0">
+      <ion-button slot="end" color="danger" (click)="borrarTodos()">
+        <ion-label>Borrar todos</ion-label>
+        <ion-icon name="trash"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <ion-item *ngFor="let item of pedidoSer.pedido_request.detalle">
+      <ion-thumbnail slot="start">
+        <img src="assets/icon/producto.svg" />
+      </ion-thumbnail>
+      
+      <ion-label class="ion-text-wrap">
+        <p>{{ item.nombre | titlecase }}</p>
+        <p>{{ item.total | currency }}</p>
+        <p>Cantidad: {{ item.cantidad }}</p>
+      </ion-label>
+      
+      <ion-button slot="end" fill="clear" (click)="quitarProducto(item.id_producto)">
+        <ion-icon slot="icon-only" name="trash" color="danger"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
